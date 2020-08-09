@@ -1,10 +1,11 @@
-import { api, defaultPageNumber } from "./constants";
+import { api, itemsPerPage, defaultPageNumber } from "./constants";
 const axios = require("axios");
 
 async function getBooks(page = defaultPageNumber, searchTerm = "") {
     const searchParams = {
         page: page,
-        filters: [{ type: "all", values: [searchTerm] }]
+        itemsPerPage: itemsPerPage,
+        filters: [{ type: "all", values: [searchTerm] }],
     };
 
     return await axios.post(api, searchParams).then((response) => response.data);

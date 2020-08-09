@@ -1,29 +1,25 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 
 const RenderedCard = ({ Book }) => {
     return (
-        <Card>
+        <Card border="primary" style={{ "text-align": "left", padding: "8px", height: "100%" }}>
             <Card.Title className="book__title">{Book.book_title}</Card.Title>
-            <Card.Subtitle className="book__subtitle">{Book.book_author}</Card.Subtitle>
-            <ListGroup className="book__information">
-                <ListGroup.Item className="book__information--publicationYear">
+            <Card.Subtitle className="book__subtitle">{Book.book_author.join(", ")}</Card.Subtitle>
+            <br />
+            <Card.Text className="book__information">
+                <Card.Text className="book__information--publicationYear">
                     Publication Year: {Book.book_publication_year}
-                </ListGroup.Item>
-                <ListGroup.Item className="book__information--country">
+                </Card.Text>
+                <Card.Text className="book__information--country">
                     Country: {Book.book_publication_country}
-                </ListGroup.Item>
-                <ListGroup.Item className="book__information--city">
+                </Card.Text>
+                <Card.Text className="book__information--city">
                     City: {Book.book_publication_city}
-                </ListGroup.Item>
-                <ListGroup.Item className="book__information--pages">
-                    Pages: {Book.book_pages}
-                </ListGroup.Item>
-                <ListGroup.Item className="book__information--id">
-                    ID: {Book.id}
-                </ListGroup.Item>
-            </ListGroup>
+                </Card.Text>
+                <Card.Text className="book__information--pages">Pages: {Book.book_pages}</Card.Text>
+                <Card.Text className="book__information--id">ID: {Book.id}</Card.Text>
+            </Card.Text>
         </Card>
     );
 }

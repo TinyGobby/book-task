@@ -19,7 +19,8 @@ describe("getBooks api tests", () => {
 
         expect(axios.post).toHaveBeenCalledWith(api, {
             page: defaultPageNumber,
-            filters: [{ type: "all", values: [""] }]
+            itemsPerPage: 4,
+            filters: [{ type: "all", values: [""] }],
         });
     });
 
@@ -28,6 +29,7 @@ describe("getBooks api tests", () => {
 
         expect(axios.post).toHaveBeenCalledWith(api, {
             page: 2,
+            itemsPerPage: 4,
             filters: [{ type: "all", values: [""] }],
         });
     });
@@ -37,6 +39,7 @@ describe("getBooks api tests", () => {
 
         expect(axios.post).toHaveBeenCalledWith(api, {
             page: 1,
+            itemsPerPage: 4,
             filters: [{ type: "all", values: ["test"] }],
         });
     });

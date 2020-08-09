@@ -4,8 +4,8 @@ import RenderedCard from "./RenderedCard";
 import Pagination from "./Pagination";
 import getBooks from "../getBooks";
 import { defaultPageNumber } from "../constants";
+import { Navbar, Form, FormControl, Button, Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom"
-import "../styles/App.css";
 
 const getPageNumberFromUrl = () => {
     const kvp = document.location.search.substr(1).split("=");
@@ -38,15 +38,42 @@ function App (){
 
     const renderBooks = () => {
       if(books) {
-        return books.map((book) => <RenderedCard Book={book} />)
+        return (
+            <>
+                {books.map((book) => (
+                <Col>
+                    <RenderedCard Book={book} />
+                </Col>
+                ))}
+            </ >
+        );
       }
     }
 
     return (
         <div className="App">
-            <SearchBar onSearchSubmit={onSearchSubmit} />
-            {renderBooks()}
-            <Pagination page={page} onPageNumberChange={search} />
+            <Navbar bg="primary">
+                <Navbar.Brand>Books Api Webapp by Patrick Harris</Navbar.Brand>
+            </Navbar>
+            <Container>
+                <Row>
+                    <Col>
+                        <SearchBar onSearchSubmit={onSearchSubmit} />
+                    </Col>
+                </Row>
+                <Row>{renderBooks()}</Row>
+                <Row>
+                    <Col
+                        style={{
+                            display: "flex",
+                            "justify-content": "center",
+                            "align-items": "center",
+                        }}
+                    >
+                        <Pagination page={page} onPageNumberChange={search} />
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }

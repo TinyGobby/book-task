@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 const Pagination = ({ page, onPageNumberChange }) => {
     const onSelect = (item) => {
@@ -12,9 +13,23 @@ const Pagination = ({ page, onPageNumberChange }) => {
     };
 
     return (
-        <ul className={"pagination"}>
-            <button className={"pagination__prev"} onClick={() => onSelect("Prev")}>Prev</button>
-            <button className={"pagination__next"} onClick={() => onSelect("Next")}>Next</button>
+        <ul className={"pagination"} style={{ display: "block" }}>
+            <Button
+                className={"pagination__prev"}
+                onClick={() => onSelect("Prev")}
+                variant="outline-primary"
+                style={{ margin: "3px" }}
+            >
+                Prev
+            </Button>
+            <Button
+                className={"pagination__next"}
+                onClick={() => onSelect("Next")}
+                variant="outline-primary"
+                style={{ margin: "3px" }}
+            >
+                Next
+            </Button>
         </ul>
     );
 };
