@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import RenderedCard from "./RenderedCard";
 import getBooks from "./getBooks";
 import "./styles/App.css";
 
-function App() {
+const App = () => {
     const [books, setBooks] = useState();
 
-    async function search() {
+    const search = async () => {
         const results = await getBooks();
         setBooks(results.books);
+    }
+
+    const renderBooks = () => {
+      if(books) {
+        return (<RenderedCard Book={books[0]}/>);
+      }
     }
 
     return (
         <div className="App">
             <header className="App-header">
                 <Button onClick={search}>Button</Button>
-                {books ? (
-                    <Card>
-                        <Card.Body>{books[0].book_title}</Card.Body>
-                    </Card>
-                ) : (
-                    <></>
-                )}
+                {renderBooks()}
             </header>
         </div>
     );
