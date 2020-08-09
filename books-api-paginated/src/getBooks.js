@@ -1,8 +1,8 @@
 const axios = require("axios");
-const api = "http://nyx.vima.ekt.gr:3000/api/books";
+export const api = "http://nyx.vima.ekt.gr:3000/api/books";
 
-async function getBooks() {
-    const searchParams = {page: 1}
+async function getBooks(page = 1) {
+    const searchParams = { page: page };
     return await axios.post(api, searchParams).then(response => response.data);
 }
 
