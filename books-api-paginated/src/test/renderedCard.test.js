@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import RenderedCard from "../RenderedCard";
+import RenderedCard from "../components/RenderedCard";
 import mockData from "./mockData";
 
 let wrapper;

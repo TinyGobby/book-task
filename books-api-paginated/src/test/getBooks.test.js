@@ -1,6 +1,7 @@
 import axios from "axios";
 import mockData from "./mockData";
-import getBooks, { api } from "../getBooks";
+import getBooks from "../getBooks";
+import { api, defaultPageNumber, itemsPerPage } from "../constants";
 
 describe("getBooks api tests", () => {
     beforeEach(() => {
@@ -16,12 +17,15 @@ describe("getBooks api tests", () => {
     it("should be called with api and page: 1 by default", async () => {
         await getBooks();
 
-        expect(axios.post).toHaveBeenCalledWith(api, { page: 1 });
+        expect(axios.post).toHaveBeenCalledWith(api, {
+            page: defaultPageNumber,
+            itemsPerPage: itemsPerPage,
+        });
     });
 
     it("should be called with an updated page number when passed", async () => {
         await getBooks(2);
 
-        expect(axios.post).toHaveBeenCalledWith(api, { page: 2 });
+        expect(axios.post).toHaveBeenCalledWith(api, { page: 2, itemsPerPage: itemsPerPage });
     });
 });

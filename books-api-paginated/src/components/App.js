@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
 import RenderedCard from "./RenderedCard";
-import getBooks from "./getBooks";
-import "./styles/App.css";
+import Pagination from "./Pagination";
+import getBooks from "../getBooks";
+import "../styles/App.css";
 
-const App = () => {
+function App (){
     const [books, setBooks] = useState();
+
+    useEffect(() => {
+      search();
+    });
 
     const search = async () => {
         const results = await getBooks();
@@ -14,15 +18,15 @@ const App = () => {
 
     const renderBooks = () => {
       if(books) {
-        return (<RenderedCard Book={books[0]}/>);
+        return books.map((book) => <RenderedCard Book={book} />)
       }
     }
 
     return (
         <div className="App">
             <header className="App-header">
-                <Button onClick={search}>Button</Button>
                 {renderBooks()}
+                <Pagination />
             </header>
         </div>
     );
