@@ -13,15 +13,26 @@ describe("Pagination tests", () => {
         );
     });
 
+    afterEach(() => {
+        onPageNumberChange.mockClear();
+    });
+
     it("calls onPageNumberChange with page+1 if Next is clicked", () => {
         wrapper.find(".pagination__next").simulate("click");
 
-        expect(onPageNumberChange).toHaveBeenCalledWith(startingPageNumber + 1);
+        expect(onPageNumberChange).toHaveBeenCalledWith({ pageNumber: startingPageNumber + 1 });
     });
 
     it("calls onPageNumberChange with page-1 if Prev is clicked", () => {
         wrapper.find(".pagination__prev").simulate("click");
 
-        expect(onPageNumberChange).toHaveBeenCalledWith(startingPageNumber - 1);
+        expect(onPageNumberChange).toHaveBeenCalledWith({ pageNumber: startingPageNumber - 1 });
+    });
+
+    it("doesn't call onPageNumberChange if Prev is clicked on page 1", () => {
+        wrapper.setProps({ page: 1 });
+        wrapper.find(".pagination__prev").simulate("click");
+
+        expect(onPageNumberChange).not.toHaveBeenCalled();
     });
 });

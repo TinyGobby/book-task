@@ -19,13 +19,25 @@ describe("getBooks api tests", () => {
 
         expect(axios.post).toHaveBeenCalledWith(api, {
             page: defaultPageNumber,
-            itemsPerPage: itemsPerPage,
+            filters: [{ type: "all", values: [""] }]
         });
     });
 
     it("should be called with an updated page number when passed", async () => {
         await getBooks(2);
 
-        expect(axios.post).toHaveBeenCalledWith(api, { page: 2, itemsPerPage: itemsPerPage });
+        expect(axios.post).toHaveBeenCalledWith(api, {
+            page: 2,
+            filters: [{ type: "all", values: [""] }],
+        });
+    });
+
+    it("should be called with an searchTerm when passed", async () => {
+        await getBooks(1, "test");
+
+        expect(axios.post).toHaveBeenCalledWith(api, {
+            page: 1,
+            filters: [{ type: "all", values: ["test"] }],
+        });
     });
 });
