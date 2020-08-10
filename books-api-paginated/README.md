@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [React Bootstrap](https://react-bootstrap.github.io/) with a custom bootstrap primary colour.
 
-![GitHub Logo](/src/Screenshot.jpg)
+![Screenshot](/src/Screenshot.jpg)
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
