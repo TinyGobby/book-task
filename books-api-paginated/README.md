@@ -17,8 +17,7 @@ You must have nodeJs installed, this can be downloaded [here](https://nodejs.org
 ## Installation
 
 1. Clone the repository
-2. `cd books-api-paginated`
-3. `npm install`
+2. `npm install`
 
 ## Running The App
 
